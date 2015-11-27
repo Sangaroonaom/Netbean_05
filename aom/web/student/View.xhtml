@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ViewStudentTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputText value="#{bundle.ViewStudentLabel_stdid}"/>
+                    <h:outputText value="#{studentController.selected.stdid}" title="#{bundle.ViewStudentTitle_stdid}"/>
+                    <h:outputText value="#{bundle.ViewStudentLabel_stdFname}"/>
+                    <h:outputText value="#{studentController.selected.stdFname}" title="#{bundle.ViewStudentTitle_stdFname}"/>
+                    <h:outputText value="#{bundle.ViewStudentLabel_stdLname}"/>
+                    <h:outputText value="#{studentController.selected.stdLname}" title="#{bundle.ViewStudentTitle_stdLname}"/>
+                    <h:outputText value="#{bundle.ViewStudentLabel_stdBirthday}"/>
+                    <h:outputText value="#{studentController.selected.stdBirthday}" title="#{bundle.ViewStudentTitle_stdBirthday}"/>
+                    <h:outputText value="#{bundle.ViewStudentLabel_address}"/>
+                    <h:outputText value="#{studentController.selected.address}" title="#{bundle.ViewStudentTitle_address}"/>
+                    <h:outputText value="#{bundle.ViewStudentLabel_phonenumber}"/>
+                    <h:outputText value="#{studentController.selected.phonenumber}" title="#{bundle.ViewStudentTitle_phonenumber}"/>
+                    <h:outputText value="#{bundle.ViewStudentLabel_email}"/>
+                    <h:outputText value="#{studentController.selected.email}" title="#{bundle.ViewStudentTitle_email}"/>
+                    <h:outputText value="#{bundle.ViewStudentLabel_coursesid}"/>
+                    <h:outputText value="#{studentController.selected.coursesid}" title="#{bundle.ViewStudentTitle_coursesid}"/>
+                    <h:outputText value="#{bundle.ViewStudentLabel_sexid}"/>
+                    <h:outputText value="#{studentController.selected.sexid}" title="#{bundle.ViewStudentTitle_sexid}"/>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{studentController.destroyAndView}" value="#{bundle.ViewStudentDestroyLink}"/>
+                <br />
+                <br />
+                <h:link outcome="Edit" value="#{bundle.ViewStudentEditLink}"/>
+                <br />
+                <h:commandLink action="#{studentController.prepareCreate}" value="#{bundle.ViewStudentCreateLink}" />
+                <br />
+                <h:commandLink action="#{studentController.prepareList}" value="#{bundle.ViewStudentShowAllLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ViewStudentIndexLink}"/>
+
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

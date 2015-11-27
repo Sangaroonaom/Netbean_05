@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.CreateStudentTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.CreateStudentLabel_stdid}" for="stdid" />
+                    <h:inputText id="stdid" value="#{studentController.selected.stdid}" title="#{bundle.CreateStudentTitle_stdid}" required="true" requiredMessage="#{bundle.CreateStudentRequiredMessage_stdid}"/>
+                    <h:outputLabel value="#{bundle.CreateStudentLabel_stdFname}" for="stdFname" />
+                    <h:inputText id="stdFname" value="#{studentController.selected.stdFname}" title="#{bundle.CreateStudentTitle_stdFname}" />
+                    <h:outputLabel value="#{bundle.CreateStudentLabel_stdLname}" for="stdLname" />
+                    <h:inputText id="stdLname" value="#{studentController.selected.stdLname}" title="#{bundle.CreateStudentTitle_stdLname}" />
+                    <h:outputLabel value="#{bundle.CreateStudentLabel_stdBirthday}" for="stdBirthday" />
+                    <h:inputText id="stdBirthday" value="#{studentController.selected.stdBirthday}" title="#{bundle.CreateStudentTitle_stdBirthday}" />
+                    <h:outputLabel value="#{bundle.CreateStudentLabel_address}" for="address" />
+                    <h:inputText id="address" value="#{studentController.selected.address}" title="#{bundle.CreateStudentTitle_address}" />
+                    <h:outputLabel value="#{bundle.CreateStudentLabel_phonenumber}" for="phonenumber" />
+                    <h:inputText id="phonenumber" value="#{studentController.selected.phonenumber}" title="#{bundle.CreateStudentTitle_phonenumber}" />
+                    <h:outputLabel value="#{bundle.CreateStudentLabel_email}" for="email" />
+                    <h:inputText id="email" value="#{studentController.selected.email}" title="#{bundle.CreateStudentTitle_email}" />
+                    <h:outputLabel value="#{bundle.CreateStudentLabel_coursesid}" for="coursesid" />
+                    <h:selectOneMenu id="coursesid" value="#{studentController.selected.coursesid}" title="#{bundle.CreateStudentTitle_coursesid}" >
+                        <f:selectItems value="#{coursesController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.CreateStudentLabel_sexid}" for="sexid" />
+                    <h:selectOneMenu id="sexid" value="#{studentController.selected.sexid}" title="#{bundle.CreateStudentTitle_sexid}" required="true" requiredMessage="#{bundle.CreateStudentRequiredMessage_sexid}">
+                        <f:selectItems value="#{genderController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{studentController.create}" value="#{bundle.CreateStudentSaveLink}" />
+                <br />
+                <br />
+                <h:commandLink action="#{studentController.prepareList}" value="#{bundle.CreateStudentShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.CreateStudentIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

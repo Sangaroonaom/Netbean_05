@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.EditTeacherTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.EditTeacherLabel_teacherid}" for="teacherid" />
+                    <h:inputText id="teacherid" value="#{teacherController.selected.teacherid}" title="#{bundle.EditTeacherTitle_teacherid}" required="true" requiredMessage="#{bundle.EditTeacherRequiredMessage_teacherid}"/>
+                    <h:outputLabel value="#{bundle.EditTeacherLabel_teacherFname}" for="teacherFname" />
+                    <h:inputText id="teacherFname" value="#{teacherController.selected.teacherFname}" title="#{bundle.EditTeacherTitle_teacherFname}" />
+                    <h:outputLabel value="#{bundle.EditTeacherLabel_teacherLname}" for="teacherLname" />
+                    <h:inputText id="teacherLname" value="#{teacherController.selected.teacherLname}" title="#{bundle.EditTeacherTitle_teacherLname}" />
+                    <h:outputLabel value="#{bundle.EditTeacherLabel_phonenumber}" for="phonenumber" />
+                    <h:inputText id="phonenumber" value="#{teacherController.selected.phonenumber}" title="#{bundle.EditTeacherTitle_phonenumber}" />
+                    <h:outputLabel value="#{bundle.EditTeacherLabel_email}" for="email" />
+                    <h:inputText id="email" value="#{teacherController.selected.email}" title="#{bundle.EditTeacherTitle_email}" />
+                    <h:outputLabel value="#{bundle.EditTeacherLabel_coursesid}" for="coursesid" />
+                    <h:selectOneMenu id="coursesid" value="#{teacherController.selected.coursesid}" title="#{bundle.EditTeacherTitle_coursesid}" >
+                        <f:selectItems value="#{coursesController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.EditTeacherLabel_sexid}" for="sexid" />
+                    <h:selectOneMenu id="sexid" value="#{teacherController.selected.sexid}" title="#{bundle.EditTeacherTitle_sexid}" required="true" requiredMessage="#{bundle.EditTeacherRequiredMessage_sexid}">
+                        <f:selectItems value="#{genderController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <h:commandLink action="#{teacherController.update}" value="#{bundle.EditTeacherSaveLink}"/>
+                <br />
+                <br />
+                <h:link outcome="View" value="#{bundle.EditTeacherViewLink}"/>
+                <br />
+                <h:commandLink action="#{teacherController.prepareList}" value="#{bundle.EditTeacherShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.EditTeacherIndexLink}" />
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

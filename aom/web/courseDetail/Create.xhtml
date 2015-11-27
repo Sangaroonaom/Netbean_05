@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.CreateCourseDetailTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.CreateCourseDetailLabel_courescost}" for="courescost" />
+                    <h:inputText id="courescost" value="#{courseDetailController.selected.courescost}" title="#{bundle.CreateCourseDetailTitle_courescost}" />
+                    <h:outputLabel value="#{bundle.CreateCourseDetailLabel_coursesid}" for="coursesid" />
+                    <h:inputText id="coursesid" value="#{courseDetailController.selected.coursesid}" title="#{bundle.CreateCourseDetailTitle_coursesid}" required="true" requiredMessage="#{bundle.CreateCourseDetailRequiredMessage_coursesid}"/>
+                    <h:outputLabel value="#{bundle.CreateCourseDetailLabel_courses}" for="courses" />
+                    <h:selectOneMenu id="courses" value="#{courseDetailController.selected.courses}" title="#{bundle.CreateCourseDetailTitle_courses}" required="true" requiredMessage="#{bundle.CreateCourseDetailRequiredMessage_courses}">
+                        <f:selectItems value="#{coursesController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{courseDetailController.create}" value="#{bundle.CreateCourseDetailSaveLink}" />
+                <br />
+                <br />
+                <h:commandLink action="#{courseDetailController.prepareList}" value="#{bundle.CreateCourseDetailShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.CreateCourseDetailIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>
